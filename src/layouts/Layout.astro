@@ -1,0 +1,146 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'SILVADORITA — Empresa Minera S.R.L. | Wolframio, Estaño y Oro',
+  description = 'Empresa Minera "Silvadorita" S.R.L. Minería boliviana de wolframio, estaño y oro constituida en 2016 en Cochabamba, con operaciones en Ayopaya y áreas mineras en Cochabamba y La Paz.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Google Fonts: Outfit (Display), Plus Jakarta Sans (Body), JetBrains Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col antialiased selection:bg-[#d4af37]/30 selection:text-[#f5df90] bg-[#060a12] text-slate-200">
+    <slot />
+
+    <!-- Interactive Spotlight, 3D Tilt, Animated Counters & Scroll Reveal -->
+    <script>
+      // 1. Scroll Reveal Observer
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      revealElements.forEach((el) => {
+        if (!el.classList.contains('is-visible')) {
+          revealObserver.observe(el);
+        }
+      });
+
+      // 2. Mouse Spotlight & 3D Tilt Effect on Bento Cards
+      const bentoCards = document.querySelectorAll<HTMLElement>('.bento-card');
+      bentoCards.forEach((card) => {
+        const isTilt = card.hasAttribute('data-tilt');
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+
+          if (isTilt && window.innerWidth >= 1024) {
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -4.5;
+            const rotateY = ((x - centerX) / centerX) * 4.5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          if (isTilt) {
+            card.style.transform = '';
+          }
+        });
+      });
+
+      // 3. Animated Numerical Counters
+      const counterElements = document.querySelectorAll<HTMLElement>('[data-counter]');
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.getAttribute('data-counter') || '0', 10);
+            const suffix = el.getAttribute('data-suffix') || '';
+            const prefix = el.getAttribute('data-prefix') || '';
+            const duration = 1600;
+            const startTime = performance.now();
+
+            const tick = (now: number) => {
+              const progress = Math.min((now - startTime) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 4);
+              const current = Math.round(eased * target);
+              el.textContent = `${prefix}${current}${suffix}`;
+              if (progress < 1) {
+                requestAnimationFrame(tick);
+              } else {
+                el.textContent = `${prefix}${target}${suffix}`;
+              }
+            };
+
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      counterElements.forEach((el) => counterObserver.observe(el));
+
+      // 4. Active Section Spy for Floating Pill Navbar
+      const sections = document.querySelectorAll('section[id], footer[id]');
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach((link) => {
+                if (link.getAttribute('href') === `#${id}`) {
+                  link.classList.add('bg-white/10', 'text-[#f5df90]', 'border-white/15');
+                  link.classList.remove('text-slate-300', 'border-transparent');
+                } else {
+                  link.classList.remove('bg-white/10', 'text-[#f5df90]', 'border-white/15');
+                  link.classList.add('text-slate-300', 'border-transparent');
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      sections.forEach((section) => sectionObserver.observe(section));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+---
+interface Props {
+  variant?: 'pill-nav' | 'hero-emblem' | 'footer';
+  class?: string;
+}
+
+const { variant = 'pill-nav', class: className = '' } = Astro.props;
+---
+
+{
+  variant === 'pill-nav' && (
+    <div class:list={['inline-flex items-center gap-2.5 sm:gap-3 select-none group', className]}>
+      <div class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#162238] to-[#0a101d] border border-[#d4af37]/30 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.15)] group-hover:border-[#d4af37]/70 transition-all duration-300 shrink-0">
+        <svg
+          class="w-6 h-5 sm:w-7 sm:h-6 transition-transform duration-300 group-hover:scale-110"
+          viewBox="155 135 310 240"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <polygon points="321,142 244.5,270 321,353" fill="#CBD5E1" />
+          <polygon points="321,142 451,353 321,353" fill="#1E325C" />
+          <polygon points="244.5,225 168,353 244.5,353" fill="#94A3B8" />
+          <polygon points="244.5,225 321,353 244.5,353" fill="#475569" />
+          <polyline
+            points="331,179 366,236 344,269 381,325"
+            stroke="#F5DF90"
+            stroke-width="13"
+            fill="none"
+          />
+          <polygon points="386,309 366,331 386,331" fill="#FFF3C4" />
+          <polygon points="386,309 406,331 386,331" fill="#D4AF37" />
+          <polygon points="366,331 386,353 386,331" fill="#B38418" />
+          <polygon points="406,331 386,353 386,331" fill="#F5DF90" />
+          <rect x="162" y="360" width="295" height="8" fill="#D4AF37" />
+        </svg>
+      </div>
+      <div class="flex flex-col min-w-0">
+        <span class="font-display text-sm sm:text-base lg:text-lg font-extrabold tracking-[0.1em] sm:tracking-[0.12em] text-white group-hover:text-[#f5df90] transition-colors leading-none truncate">
+          SILVADORITA
+        </span>
+        <span class="font-mono-tech text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.2em] text-[#d4af37]/80 uppercase mt-1 leading-none truncate">
+          EMPRESA MINERA S.R.L.
+        </span>
+      </div>
+    </div>
+  )
+}
+
+{
+  variant === 'hero-emblem' && (
+    <div class:list={['inline-flex flex-col items-center select-none', className]}>
+      <div class="relative">
+        <!-- Ambient Golden Backlight -->
+        <div class="absolute -inset-6 rounded-full bg-[#d4af37]/20 blur-2xl animate-aura pointer-events-none"></div>
+        <div class="relative w-20 h-20 sm:w-26 sm:h-26 lg:w-28 lg:h-28 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#152036]/90 to-[#090e1a]/95 border border-[#d4af37]/35 shadow-[0_0_50px_-10px_rgba(212,175,55,0.35)] flex items-center justify-center p-2.5 sm:p-3 backdrop-blur-xl">
+          <svg
+            class="w-full h-full drop-shadow-[0_4px_12px_rgba(212,175,55,0.25)]"
+            viewBox="155 135 310 242"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Emblema de Empresa Minera Silvadorita S.R.L."
+          >
+            <polygon points="321,142 244.5,270 321,353" fill="#CBD5E1" />
+            <polygon points="321,142 451,353 321,353" fill="#1B2F59" />
+            <polygon points="244.5,225 168,353 244.5,353" fill="#8292A7" />
+            <polygon points="244.5,225 321,353 244.5,353" fill="#43546D" />
+            <polyline
+              class="animate-vein-flow"
+              points="331,179 366,236 344,269 381,325"
+              stroke="#F5DF90"
+              stroke-width="12"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              fill="none"
+            />
+            <polygon points="386,309 366,331 386,331" fill="#FFF3C4" />
+            <polygon points="386,309 406,331 386,331" fill="#D4AF37" />
+            <polygon points="366,331 386,353 386,331" fill="#B38418" />
+            <polygon points="406,331 386,353 386,331" fill="#F5DF90" />
+            <rect x="162" y="361" width="295" height="7.5" fill="#D4AF37" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+{
+  variant === 'footer' && (
+    <div class:list={['inline-flex items-center gap-3.5 sm:gap-4 select-none', className]}>
+      <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#162238] to-[#0a101d] border border-[#d4af37]/35 p-2 flex items-center justify-center shadow-[0_0_25px_rgba(212,175,55,0.18)] shrink-0">
+        <svg
+          class="w-full h-full"
+          viewBox="155 135 310 240"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <polygon points="321,142 244.5,270 321,353" fill="#CBD5E1" />
+          <polygon points="321,142 451,353 321,353" fill="#1E325C" />
+          <polygon points="244.5,225 168,353 244.5,353" fill="#8292A7" />
+          <polygon points="244.5,225 321,353 244.5,353" fill="#43546D" />
+          <polyline
+            points="331,179 366,236 344,269 381,325"
+            stroke="#F5DF90"
+            stroke-width="12"
+            fill="none"
+          />
+          <polygon points="386,309 366,331 386,331" fill="#FFF3C4" />
+          <polygon points="386,309 406,331 386,331" fill="#D4AF37" />
+          <polygon points="366,331 386,353 386,331" fill="#B38418" />
+          <polygon points="406,331 386,353 386,331" fill="#F5DF90" />
+          <rect x="162" y="360" width="295" height="7.5" fill="#D4AF37" />
+        </svg>
+      </div>
+      <div>
+        <div class="font-display text-lg sm:text-xl font-extrabold tracking-[0.12em] text-white leading-tight">
+          SILVADORITA
+        </div>
+        <div class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] tracking-widest uppercase mt-0.5">
+          Empresa Minera S.R.L.
+        </div>
+      </div>
+    </div>
+  )
+}

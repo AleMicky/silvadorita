@@ -1,0 +1,204 @@
+---
+import { companyFactsData } from '../data/company';
+---
+
+<section id="datos-empresa" class="scroll-mt-24 py-16 sm:py-24 lg:py-28 bg-[#080d18] relative overflow-hidden">
+  <!-- Ambient Glow -->
+  <div class="pointer-events-none absolute bottom-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-[#d4af37]/6 blur-[130px]" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2.5 font-mono-tech text-[11px] sm:text-xs font-semibold tracking-[0.18em] sm:tracking-[0.2em] text-[#f5df90] uppercase mb-2.5 sm:mb-3">
+          <span class="w-6 sm:w-8 h-[1.5px] bg-[#d4af37]"></span>
+          <span>03 / REGISTRO LEGAL Y SOCIETARIO</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          {companyFactsData.title}
+        </h2>
+      </div>
+      <div class="self-start md:self-auto inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.03] border border-white/10 font-mono-tech text-[11px] sm:text-xs text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+        <span>REGISTRO DE COMERCIO ACTIVO</span>
+      </div>
+    </div>
+
+    <!-- Interactive Bento Corporate Dossier -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5">
+      <!-- Card 1: Razón social (6 cols) -->
+      <div data-tilt class="reveal delay-100 bento-card tilt-card md:col-span-6 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8">
+        <div class="relative z-10">
+          <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+            01 · RAZÓN SOCIAL
+          </span>
+          <div class="font-display text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mt-2">
+            Empresa Minera "Silvadorita" S.R.L.
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-2 font-mono-tech">
+            DENOMINACIÓN OFICIAL INSCRITA EN BOLIVIA
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2: NIT y matrícula de comercio (6 cols) -->
+      <div data-tilt class="reveal delay-100 bento-card tilt-card md:col-span-6 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8">
+        <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 h-full">
+          <div>
+            <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+              02 · NIT Y MATRÍCULA DE COMERCIO
+            </span>
+            <div class="font-mono-tech text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gold-gradient mt-2 tracking-wider">
+              313716027
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-mono-tech">
+              INSCRITA DESDE EL 12 DE MAYO DE 2016
+            </p>
+          </div>
+          <button
+            type="button"
+            data-copy-value="313716027"
+            class="copy-btn w-full sm:w-auto justify-center inline-flex items-center gap-2 px-4 py-2.5 rounded-xl sm:rounded-2xl text-xs font-mono-tech font-bold text-[#060a12] bg-gradient-to-r from-[#f5df90] to-[#d4af37] hover:brightness-110 transition-all cursor-pointer shrink-0 shadow-[0_0_20px_rgba(212,175,55,0.25)]"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span class="copy-label">COPIAR NIT</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: Tipo de sociedad (4 cols on lg, 6 on md) -->
+      <div data-tilt class="reveal delay-200 bento-card tilt-card md:col-span-6 lg:col-span-4 rounded-2xl sm:rounded-3xl p-5 sm:p-7">
+        <div class="relative z-10">
+          <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+            03 · TIPO DE SOCIEDAD
+          </span>
+          <div class="font-display text-lg sm:text-xl font-bold text-white mt-2">
+            Sociedad de Responsabilidad Limitada
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 font-mono-tech text-xs text-slate-300">
+            Régimen Comercial S.R.L.
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 4: Fecha de constitución (4 cols on lg, 6 on md) -->
+      <div data-tilt class="reveal delay-200 bento-card tilt-card md:col-span-6 lg:col-span-4 rounded-2xl sm:rounded-3xl p-5 sm:p-7">
+        <div class="relative z-10">
+          <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+            04 · FECHA DE CONSTITUCIÓN
+          </span>
+          <div class="font-display text-lg sm:text-xl font-bold text-white mt-2">
+            22 de abril de 2016
+          </div>
+          <span class="inline-block mt-3 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 font-mono-tech text-xs text-slate-300">
+            Ciudad de Cochabamba
+          </span>
+        </div>
+      </div>
+
+      <!-- Card 5: Áreas mineras (4 cols on lg, 12 on md) -->
+      <div data-tilt class="reveal delay-200 bento-card tilt-card md:col-span-12 lg:col-span-4 rounded-2xl sm:rounded-3xl p-5 sm:p-7">
+        <div class="relative z-10">
+          <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+            05 · ÁREAS MINERAS
+          </span>
+          <div class="font-display text-lg sm:text-xl font-bold text-white mt-2">
+            La Poderosa, Mi Triunfo y San Esteban
+          </div>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            <a href="#areas-mineras" class="px-2.5 py-1 rounded-lg bg-emerald-500/15 border border-emerald-400/30 font-mono-tech text-[11px] text-emerald-300 hover:bg-emerald-500/25 transition-colors">
+              La Poderosa
+            </a>
+            <a href="#areas-mineras" class="px-2.5 py-1 rounded-lg bg-sky-500/15 border border-sky-400/30 font-mono-tech text-[11px] text-sky-300 hover:bg-sky-500/25 transition-colors">
+              Mi Triunfo
+            </a>
+            <a href="#areas-mineras" class="px-2.5 py-1 rounded-lg bg-amber-500/15 border border-[#d4af37]/30 font-mono-tech text-[11px] text-[#f5df90] hover:bg-amber-500/25 transition-colors">
+              San Esteban
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Domicilio legal (6 cols) -->
+      <div data-tilt class="reveal delay-300 bento-card tilt-card md:col-span-6 rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 flex flex-col justify-between">
+        <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 h-full">
+          <div>
+            <span class="font-mono-tech text-[11px] sm:text-xs text-[#d4af37] uppercase tracking-widest block">
+              06 · DOMICILIO LEGAL
+            </span>
+            <div class="font-display text-lg sm:text-xl font-bold text-white mt-2 leading-snug">
+              Plaza 14 de Septiembre N° 328, zona Central, Cochabamba, Bolivia
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-2 font-mono-tech">
+              SEDE ADMINISTRATIVA Y LEGAL
+            </p>
+          </div>
+          <button
+            type="button"
+            data-copy-value="Plaza 14 de Septiembre N° 328, zona Central, Cochabamba, Bolivia"
+            class="copy-btn w-full sm:w-auto justify-center inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-mono-tech font-semibold text-slate-200 bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 hover:border-[#d4af37]/50 transition-all cursor-pointer shrink-0"
+          >
+            <svg class="w-3.5 h-3.5 text-[#f5df90] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span class="copy-label">COPIAR DIRECCIÓN</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 7: Minerales with Photographic Studio Showcase (6 cols) -->
+      <div data-tilt class="reveal delay-300 bento-card tilt-card md:col-span-6 rounded-2xl sm:rounded-3xl overflow-hidden relative min-h-[190px] flex items-end group">
+        <img
+          src="/images/minerals-showcase.jpg"
+          alt="Muestras minerales de Wolframio, Estaño y Oro"
+          class="absolute inset-0 w-full h-full object-cover object-center opacity-55 group-hover:scale-105 transition-transform duration-700"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#060a12]/95 via-[#060a12]/70 to-transparent"></div>
+        <div class="relative z-10 p-5 sm:p-7 lg:p-8 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="font-mono-tech text-[11px] sm:text-xs text-[#f5df90] uppercase tracking-widest block">
+              07 · MINERALES EXPLOTADOS
+            </span>
+            <div class="font-display text-xl sm:text-2xl font-extrabold text-white mt-1.5">
+              Wolframio, estaño y oro
+            </div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-[#060a12]/80 border border-[#d4af37]/40 font-mono-tech text-xs text-[#f5df90]">
+                W · Wolframio
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#060a12]/80 border border-white/20 font-mono-tech text-xs text-slate-200">
+                Sn · Estaño
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-[#060a12]/80 border border-[#d4af37]/40 font-mono-tech text-xs text-[#f5df90]">
+                Au · Oro
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const value = btn.getAttribute('data-copy-value');
+      const label = btn.querySelector('.copy-label');
+      if (!value || !label) return;
+
+      try {
+        await navigator.clipboard.writeText(value);
+        const originalText = label.textContent;
+        label.textContent = '¡COPIADO!';
+        setTimeout(() => {
+          label.textContent = originalText;
+        }, 1800);
+      } catch {
+        // Fallback if clipboard is unavailable
+      }
+    });
+  });
+</script>

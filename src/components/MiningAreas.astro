@@ -1,0 +1,172 @@
+---
+import { miningAreasData } from '../data/company';
+
+const statusConfig = {
+  active: {
+    badge: 'bg-emerald-950/90 text-emerald-300 border-emerald-400/50',
+    dot: 'bg-emerald-400 shadow-[0_0_10px_#34d399]',
+    code: 'ÁREA 01 · EXPLOTACIÓN ACTIVA',
+    progress: '100%',
+    barColor: 'from-emerald-400 to-teal-500',
+    image: '/images/la-poderosa.jpg',
+    imageCaption: 'Riel aérea de transporte mineral · Independencia y Colquiri',
+  },
+  prospecting: {
+    badge: 'bg-sky-950/90 text-sky-300 border-sky-400/50',
+    dot: 'bg-sky-400 shadow-[0_0_10px_#38bdf8]',
+    code: 'ÁREA 02 · 6 VETAS IDENTIFICADAS',
+    progress: '78%',
+    barColor: 'from-sky-400 to-blue-500',
+    image: '/images/mi-triunfo.jpg',
+    imageCaption: 'Mina mecanizada y planta gravimétrica · Cerro Chicote Grande',
+  },
+  pending: {
+    badge: 'bg-amber-950/90 text-[#f5df90] border-[#d4af37]/55',
+    dot: 'bg-[#f5df90] shadow-[0_0_10px_#f5df90]',
+    code: 'ÁREA 03 · GESTIÓN NORMATIVA',
+    progress: '45%',
+    barColor: 'from-[#f5df90] to-[#b8860b]',
+    image: '/images/hero-andes-mine.jpg',
+    imageCaption: 'Área minera en adecuación AJAM · Zona Cerro Chicote Grande',
+  },
+};
+---
+
+<section id="areas-mineras" class="scroll-mt-24 py-16 sm:py-24 lg:py-28 bg-[#060a12] bg-industrial-grid relative overflow-hidden">
+  <!-- Decorative Glow -->
+  <div class="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-80 sm:w-[680px] h-64 sm:h-[340px] rounded-full bg-[#d4af37]/8 blur-[140px]" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-16 gap-5 sm:gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2.5 font-mono-tech text-[11px] sm:text-xs font-semibold tracking-[0.18em] sm:tracking-[0.2em] text-[#f5df90] uppercase mb-2.5 sm:mb-3">
+          <span class="w-6 sm:w-8 h-[1.5px] bg-[#d4af37]"></span>
+          <span>02 / OPERACIONES EN CAMPO</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          {miningAreasData.title}
+        </h2>
+      </div>
+      <div class="lg:max-w-md rounded-2xl bg-white/[0.03] border border-white/10 p-4 sm:px-5 sm:py-3.5 flex items-start gap-3">
+        <svg class="w-5 h-5 text-[#f5df90] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {miningAreasData.subtitle}
+        </p>
+      </div>
+    </div>
+
+    <!-- 3 Interactive 3D Photographic Cards (1 col mobile, 2 cols tablet, 3 cols desktop) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+      {
+        miningAreasData.areas.map((area, index) => {
+          const cfg = statusConfig[area.statusType];
+          const delayClass = index === 0 ? 'delay-100' : index === 1 ? 'delay-200' : 'delay-300';
+          const tabletSpan = index === 2 ? 'md:col-span-2 lg:col-span-1' : '';
+
+          return (
+            <article
+              data-tilt
+              class:list={[
+                'reveal bento-card tilt-card rounded-2xl sm:rounded-3xl flex flex-col justify-between group',
+                delayClass,
+                tabletSpan,
+              ]}
+            >
+              <div>
+                <!-- Photographic Header for Each Mining Area -->
+                <div class="relative h-48 sm:h-56 w-full overflow-hidden">
+                  <img
+                    src={cfg.image}
+                    alt={`${area.name} - ${cfg.imageCaption}`}
+                    class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#0b1222] via-[#0b1222]/30 to-black/30"></div>
+
+                  <!-- Status Badge Overlaid on Photo -->
+                  <div class="absolute top-3.5 left-3.5 right-3.5 sm:top-4 sm:left-4 sm:right-4 flex items-center justify-between gap-2">
+                    <span
+                      class:list={[
+                        'inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold border backdrop-blur-md shadow-lg',
+                        cfg.badge,
+                      ]}
+                    >
+                      <span class:list={['w-2 h-2 rounded-full animate-pulse', cfg.dot]} />
+                      {area.status}
+                    </span>
+                    <span class="px-2.5 py-1 rounded-lg bg-[#060a12]/80 backdrop-blur-md border border-white/15 font-mono-tech text-[10px] sm:text-[11px] text-slate-200">
+                      0{index + 1} / 03
+                    </span>
+                  </div>
+
+                  <!-- Bottom Caption inside Photo -->
+                  <div class="absolute bottom-3 left-5 right-5">
+                    <span class="font-mono-tech text-[10px] sm:text-[10.5px] text-[#f5df90] tracking-wider uppercase block drop-shadow">
+                      {cfg.code}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="relative z-10 p-5 sm:p-7 pt-4">
+                  <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#f5df90] transition-colors">
+                    {area.name}
+                  </h3>
+
+                  <p class="mt-2.5 sm:mt-3 text-sm sm:text-[15px] text-slate-300 leading-[1.7] sm:leading-[1.75]">
+                    {area.description}
+                  </p>
+
+                  <!-- Technical Milestones -->
+                  {area.highlights.length > 0 ? (
+                    <ul class="mt-5 pt-5 border-t border-white/10 space-y-2.5 sm:space-y-3">
+                      {area.highlights.map((item) => (
+                        <li class="flex items-start gap-2.5 sm:gap-3 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                          <span class="mt-0.5 sm:mt-1 w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#f5df90] flex items-center justify-center shrink-0">
+                            <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <div class="mt-5 pt-5 border-t border-white/10">
+                      <div class="rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/[0.07] p-3.5 sm:p-4">
+                        <div class="flex items-center justify-between text-[11px] sm:text-xs font-mono-tech text-[#f5df90] mb-1.5">
+                          <span>ADECUACIÓN AJAM & AMBIENTAL</span>
+                          <span>EN CURSO</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                          Gestión técnica y jurídico-administrativa activa ante la Autoridad Jurisdiccional Administrativa Minera.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <!-- Bottom Progress & Location Indicator -->
+              <div class="relative z-10 px-5 sm:px-7 pb-5 sm:pb-7 pt-4 border-t border-white/10">
+                <div class="flex items-center justify-between font-mono-tech text-[10px] sm:text-[11px] text-slate-400 mb-2">
+                  <span>CERRO CHICOTE GRANDE</span>
+                  <span class="text-slate-300">AJAM / EMAP</span>
+                </div>
+                <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                  <div
+                    class:list={['h-full rounded-full bg-gradient-to-r', cfg.barColor]}
+                    style={`width: ${cfg.progress}`}
+                  />
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
